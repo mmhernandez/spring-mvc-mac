@@ -1,5 +1,7 @@
 package com.mmhernandez.booksfullstack.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,9 @@ public class BookController {
 	BookService bookService;
 	
 	@GetMapping("/books")
-	public String booksList() {
+	public String booksList(Model model) {
+		List<Book> bookList = bookService.getAll();
+		model.addAttribute(bookList);
 		return "bookList.jsp";
 	}
 	

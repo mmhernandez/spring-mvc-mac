@@ -11,11 +11,14 @@
 </head>
 <body>
 
-	<main class="m-5">
-		<h1><c:out value="${ book.title }"/></h1>
-		<p>Description: <c:out value="${ book.description }"/></p>
-		<p>Language: <c:out value="${ book.language }"/></p>
-		<p>Number of Pages: <c:out value="${ book.numberOfPages }"/></p>
+	<main class="my-5 w-75 mx-auto">
+		<div class="d-flex justify-content-between align-items-center mb-4">
+			<h1><c:out value="${ book.title }"/></h1>
+			<a href="/books" class="btn btn-primary">Back to List</a>
+		</div>
+		<p><span class="fw-bold">Description: </span><c:out value="${ book.description }"/></p>
+		<p><span class="fw-bold">Language: </span><c:out value="${ book.language }"/></p>
+		<p><span class="fw-bold">Number of Pages: </span><c:out value="${ book.numberOfPages }"/></p>
 	</main>
 	
 </body>
