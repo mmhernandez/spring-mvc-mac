@@ -21,10 +21,10 @@ import jakarta.validation.constraints.Size;
 public class Book {
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY) private Long id;
-	@NotNull @Size(min=2, max=255) private String title;
-	@NotNull @Size(min=10, max=255) private String description;
-	@NotNull @Size(min=2, max=255)private String language;
-	@NotNull @Min(50) private Integer numberOfPages;
+	@NotNull(message="Title required") @Size(min=2, max=255, message="Title must be at least 2 characters") private String title;
+	@NotNull(message="Description required") @Size(min=10, max=255, message="Description must be between 10-255 characters") private String description;
+	@NotNull(message="Language required") @Size(min=2, max=255, message="Language must be at least 2 characters")private String language;
+	@NotNull(message="Number of pages required") @Min(value=50, message="Must have at least 50 pages") private Integer numberOfPages;
 	@Column(updatable=false) @DateTimeFormat(pattern="yyyy-MM-dd") private Date createdAt;
 	@DateTimeFormat(pattern="yyyy-MM-dd") private Date updatedAt;
 	

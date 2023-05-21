@@ -12,7 +12,10 @@
 <body>
 
 	<main class="my-5 w-75 mx-auto">
-		<h1>All Books</h1>
+		<div class="d-flex justify-content-between align-items-center">
+			<h1>All Books</h1>
+			<a href="/books/new" class="btn btn-success">+ Book</a>
+		</div>
 		<table class="table mt-3">
 			<thead class="bg-light">
 				<tr>

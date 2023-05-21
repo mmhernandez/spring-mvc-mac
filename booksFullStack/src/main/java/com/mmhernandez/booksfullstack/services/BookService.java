@@ -37,4 +37,9 @@ public class BookService {
 		}
 	}
 	
+//	create book
+	public Book createBook(Book book) {
+		return bookRepository.save(book);
+	}
+	
 }
