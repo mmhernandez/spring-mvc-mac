@@ -60,4 +60,5 @@ public class BooksAPI {
 	public void deleteBook(@PathVariable("id") Long id) {
 		bookService.deleteBook(id);
 	}
+
 }
