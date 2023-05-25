@@ -22,6 +22,7 @@
 					<th>Burger Name</th>
 					<th>Restaurant Name</th>
 					<th>Rating</th>
+					<th>Notes</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,6 +31,7 @@
 						<td><c:out value="${ burger.name }"/></td>
 						<td><c:out value="${ burger.restaurantName }"/></td>
 						<td><c:out value="${ burger.rating }"/></td>
+						<td><c:out value="${ burger.notes }"/></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -49,25 +51,26 @@
 			<div class="mb-3">
 				<form:label path="restaurantName" class="form-label">Restaurant Name</form:label>
 				<form:input type="text" path="restaurantName" class="form-control" />
-				<p>
+				<p class="text-danger">
 					<form:errors path="restaurantName"></form:errors>
 				</p>
 			</div>
 			<div class="mb-3">
 				<form:label path="rating" class="form-label">Rating</form:label>
 				<form:input type="number" min="1" max="5" path="rating" class="form-control" />
-				<p>
+				<p class="text-danger">
 					<form:errors path="rating"></form:errors>
 				</p>
 			</div>
 			<div class="mb-3">
 				<form:label path="notes" class="form-label">Notes</form:label>
 				<form:textarea path="notes" cols="30" rows="3" class="form-control"></form:textarea>
-				<p>
+				<p class="text-danger">
 					<form:errors path="notes"></form:errors>
 				</p>
 			</div>
 			<input type="submit" value="Save" class="btn btn-info" />
+			<a href="/" class="btn btn-secondary ms-2">Cancel</a>
 		</form:form>
 	</section>
 

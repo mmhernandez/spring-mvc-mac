@@ -22,7 +22,9 @@ public class BurgerController {
 	BurgerService burgerService;
 	
 	@GetMapping("/")
-	public String burgerTracker(Model model) {
+	public String burgerTracker(
+			Model model,
+			@ModelAttribute("newBurger") Burger burger) {
 		List<Burger> burgerList = burgerService.getAll();
 		model.addAttribute(burgerList);
 		
@@ -31,9 +33,12 @@ public class BurgerController {
 	
 	@PostMapping("/burger/add")
 	public String createBurger(
+			Model model,
 			@Valid @ModelAttribute("newBurger") Burger burger,
 			BindingResult result) {
 		if(result.hasErrors()) {
+			List<Burger> burgerList = burgerService.getAll()	;
+			model.addAttribute(burgerList);
 			return "burgerTracker.jsp";
 		}
 		burgerService.createBurger(burger);
