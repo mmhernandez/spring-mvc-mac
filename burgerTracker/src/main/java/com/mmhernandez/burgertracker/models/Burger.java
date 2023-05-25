@@ -14,7 +14,6 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -24,31 +23,34 @@ public class Burger {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public Long id;
+	private Long id;
 	
 	@NotNull(message="Name required")
 	@Size(min=2, max=255, message="Name must be at least 2 characters")
-	public String name;
+	private String name;
 	
 	@NotNull(message="Restaurant name required")
 	@Size(min=2, max=255, message="Restaurant name must be at least 2 characters")
-	public String restaurantName;
+	private String restaurantName;
 	
 	@NotNull(message="Rating required")
-	@Size(min=1, max=5, message="Rating must be between 1-5")
-	public Integer rating;
+//	@Size(min=1, max=5, message="Rating must be between 1-5")
+	@Min(value=1, message="Rating must be greater than 1")
+	@Max(value=5, message="Rating cannot be more than 5")
+	private Integer rating;
 	
-	@NotEmpty(message="Notes required")
-	@Min(value=10, message="Notes must be at least 10 characters")
-	@Max(value=255, message="Notes loo long")
-	public String notes;
+	@NotNull(message="Notes required")
+	@Size(min=10, max=255, message="Notes must be at least 10 characters")
+//	@Min(value=10, message="Notes must be at least 10 characters")
+//	@Max(value=255, message="Notes too long")
+	private String notes;
 	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy=MM-dd")
-	public Date createdAt;
+	private Date createdAt;
 	
 	@DateTimeFormat(pattern="yyyy=MM-dd")
-	public Date updatedAt;
+	private Date updatedAt;
 	
 	
 //	CONSTRUCTOR
