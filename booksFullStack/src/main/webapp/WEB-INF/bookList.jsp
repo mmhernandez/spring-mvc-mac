@@ -37,7 +37,13 @@
 						</td>
 						<td><c:out value="${ book.language }" /></td>
 						<td><c:out value="${ book.numberOfPages }" /></td>
-						<td><a href="/books/${book.id}/edit">Edit</a></td>
+						<td class="d-flex gap-1 align-items-center">
+							<a href="/books/${book.id}/edit">Edit</a>
+							<form action="/books/${ book.id }" method="post">
+								<input type="hidden" name="_method" value="delete" />
+								<button type="submit" class="btn btn-link text-danger">Delete</button>
+							</form>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
