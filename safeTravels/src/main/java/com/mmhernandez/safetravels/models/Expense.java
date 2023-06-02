@@ -18,7 +18,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="expense")
-public class Expenses {
+public class Expense {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -49,8 +49,8 @@ public class Expenses {
 	
 	
 //	CONSTRUCTOR
-	public Expenses() { }
-	public Expenses(String name, String vendor, Double amount, String description) {
+	public Expense() { }
+	public Expense(String name, String vendor, Double amount, String description) {
 		this.name = name;
 		this.vendor = vendor;
 		this.amount = amount;
