@@ -14,17 +14,22 @@ public class SongService {
 
 	@Autowired
 	SongRepository songRepository;
-	
-//	CONSTRUCTORS
-	public SongService() {}
-	public SongService(SongRepository songRepository) {
-		this.songRepository = songRepository;
-	}
+
 	
 //	OTHER METHODS
 //	get all
 	public List<Song> getAll() {
 		return songRepository.findAll();
+	}
+	
+//	get all by artist
+	public List<Song> getByArtist(String artist) {
+		return songRepository.findByArtistContaining(artist);
+	}
+	
+//	get top 10 by rating descending
+	public List<Song> getHighestRatedSongs() {
+		return songRepository.findFirst10OrderByRatingDesc();
 	}
 	
 //	get one by id

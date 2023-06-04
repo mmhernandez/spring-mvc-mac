@@ -11,22 +11,13 @@
 </head>
 <body>
 
-	<nav class="d-flex justify-content-between my-5 w-50 mx-auto">
-		<div>
-			<a href="/song/new" class="me-4">Add New</a>
-			<a href="">Top Songs</a>		
-		</div>
-		<form action="/search" method="post" class="d-flex gap-2">
-			<input type="search" name="search" class="form-control" placeholder="Search by artist" />
-			<input type="submit" value="Search" class="btn btn-primary" />
-		</form>
-	</nav>
-	
 	<main class="mx-auto w-50">
+		<h1 class="my-5">Songs by: <span class="fst-italic fw-light">${ searchTerm }</span></h1>
 		<table class="table">
 			<thead class="bg-light">
 				<tr>
 					<th>Title</th>
+					<th>Artist</th>
 					<th>Rating</th>
 					<th>Actions</th>
 				</tr>
@@ -37,6 +28,7 @@
 						<td>
 							<a href="/song/${ song.id }">${ song.title }</a>
 						</td>
+						<td><c:out value="${ song.artist }" /></td>
 						<td><c:out value="${ song.rating }" /></td>
 						<td>
 							<form action="/song/${ song.id }" method="post">
@@ -52,7 +44,9 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<a href="/dashboard" class="btn btn-outline-secondary my-5">Back to dashboard</a>
 	</main>
 
+	
 </body>
 </html>
