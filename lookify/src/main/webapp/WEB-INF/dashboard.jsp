@@ -14,7 +14,7 @@
 	<nav class="d-flex justify-content-between my-5 w-50 mx-auto">
 		<div>
 			<a href="/song/new" class="me-4">Add New</a>
-			<a href="">Top Songs</a>		
+			<a href="/song/top-ten">Top Songs</a>		
 		</div>
 		<form action="/search" method="post" class="d-flex gap-2">
 			<input type="search" name="search" class="form-control" placeholder="Search by artist" />

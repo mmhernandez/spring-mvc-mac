@@ -29,7 +29,7 @@ public class SongService {
 	
 //	get top 10 by rating descending
 	public List<Song> getHighestRatedSongs() {
-		return songRepository.findFirst10OrderByRatingDesc();
+		return songRepository.findTop10ByOrderByRatingDesc();
 	}
 	
 //	get one by id

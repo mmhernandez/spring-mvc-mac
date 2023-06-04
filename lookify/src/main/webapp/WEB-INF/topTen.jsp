@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<main class="w-50">
+	<main class="w-50 mx-auto">
 		<h1 class="my-5">Top Songs</h1>
 		<c:forEach var="song" items="${ songList }">
 			<div>
@@ -20,6 +20,7 @@
 				<c:out value=" - ${ song.artist }"/>
 			</div>
 		</c:forEach>
+		<a href="/dashboard" class="btn btn-outline-secondary mt-5">Back to dashboard</a>
 	</main>
 
 </body>
