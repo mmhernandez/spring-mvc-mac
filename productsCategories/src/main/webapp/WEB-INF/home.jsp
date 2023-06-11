@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>Home</title>
 	<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
@@ -18,8 +18,8 @@
 	</div>
 	
 	<main class="w-50 mx-auto mt-4">
-		<table>
-			<thead>
+		<table class="table">
+			<thead class="bg-light">
 				<tr>
 					<th>Products</th>
 					<th>Categories</th>
