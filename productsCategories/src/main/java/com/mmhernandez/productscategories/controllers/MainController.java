@@ -6,7 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mmhernandez.productscategories.models.Category;
 import com.mmhernandez.productscategories.models.Product;
@@ -39,10 +42,32 @@ public class MainController {
 		return "newProduct.jsp";
 	}
 	
+	@GetMapping("/products/{id}")
+	public String productPage(
+			@PathVariable("id") Long id,
+			Model model) {
+		Product prod = productService.getById(id);
+		model.addAttribute("product", prod);
+		model.addAttribute("categoryList", categoryService.getByProduct(prod));
+		model.addAttribute("availableCategories", categoryService.getCategoriesNotContaining(prod));
+		return "product.jsp";
+	}
+	
 	@GetMapping("/categories/new")
 	public String newCategory(
 			@ModelAttribute("category") Category category) {
 		return "newCategory.jsp";
+	}
+	
+	@GetMapping("/categories/{id}") 
+	public String categoryPage(
+			@PathVariable("id") Long id,
+			Model model) {
+		Category cat = categoryService.getById(id);
+		model.addAttribute("category", cat);
+		model.addAttribute("productList", productService.getProductsByCategory(cat));
+		model.addAttribute("availableProducts", productService.getProductsNotContaining(cat));
+		return "category.jsp";
 	}
 	
 	
@@ -59,7 +84,7 @@ public class MainController {
 	}
 	
 	@PostMapping("/categories/new")
-	public String addProduct(
+	public String addCategory(
 			@Valid @ModelAttribute("category") Category category,
 			BindingResult result) {
 		if(result.hasErrors()) {
@@ -67,6 +92,29 @@ public class MainController {
 		}
 		categoryService.create(category);
 		return "redirect:/";
+	}
+	
+	
+	@PutMapping("/products/{id}/add/category")
+	public String updateProductCategories(
+			@RequestParam("category") Long categoryId,
+			@PathVariable("id") Long productId) {
+		Product prod = productService.getById(productId);
+		Category cat = categoryService.getById(categoryId);
+		prod.getCategories().add(cat);
+		productService.update(prod);
+		return "redirect:/products/" + productId;
+	}
+	
+	@PutMapping("/categories/{id}/add/product")
+	public String updateCategoryProducts(
+			@RequestParam("product") Long productId,
+			@PathVariable("id") Long categoryId) {
+		Category cat = categoryService.getById(categoryId);
+		Product prod = productService.getById(productId);
+		cat.getProducts().add(prod);
+		categoryService.update(cat);
+		return "redirect:/categories/" + categoryId;
 	}
 	
 }

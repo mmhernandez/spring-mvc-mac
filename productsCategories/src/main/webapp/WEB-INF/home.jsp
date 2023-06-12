@@ -30,14 +30,14 @@
 					<td>
 						<ul>
 						<c:forEach var="product" items="${ products }">	
-							<li>${ product.name }</li>
+							<li><a href="/products/${ product.id }"><c:out value="${ product.name }"/></a></li>
 						</c:forEach>
 						</ul>
 					</td>
 					<td>
 						<ul>
 						<c:forEach var="category" items="${ categories }">	
-							<li>${ category.name }</li>
+							<li><a href="/categories/${ category.id }"><c:out value="${ category.name }"/></a></li>
 						</c:forEach>
 						</ul>
 					</td>
